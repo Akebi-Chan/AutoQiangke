@@ -73,6 +73,7 @@ namespace AutoQiangke.Views
             }
             else
             {
+                Common.logger.log("PreQueryJxbFull失败！ " + querytext);
                 MessageBox.Show(res.message);
             }
         }

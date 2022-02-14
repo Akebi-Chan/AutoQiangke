@@ -100,6 +100,7 @@ namespace AutoQiangke.Views
             else
             {
                 this.Dispatcher.Invoke(() => { Transitioner.SelectedIndex = 1; });
+                Common.logger.log("PreQueryCourse失败！ " + querytext);
                 taskModel.course = null;
                 taskModel.queryresult = null;
                 taskModel.CourseName = res.message;

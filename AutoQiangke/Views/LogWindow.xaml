@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutoQiangke.Views"
         mc:Ignorable="d"
-        Title="LogWindow" Height="450" Width="800">
+        Title="LogWindow" Height="450" Width="500">
     <DockPanel LastChildFill="True">
         <Button Height="40" Style="{StaticResource MaterialDesignFlatButton}" Content="刷新" DockPanel.Dock="Bottom" Click="RefreshButton_Click"/>
         <Border Margin="0,5,0,0"

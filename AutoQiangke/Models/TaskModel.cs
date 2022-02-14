@@ -377,6 +377,7 @@ namespace AutoQiangke.Models
             if (!res.success)
             {
                 Message = res.message;
+                Common.logger.log("Query失败！ " + course.kch + " " + BlockInfo.DisplayStr);
                 return false;
             }
             //----Update Course----//
@@ -437,6 +438,7 @@ namespace AutoQiangke.Models
                         var res = Course.Query(jxb.Jxbmc, jxb.course.blockInfo);
                         if (!res.success)
                         {
+                            Common.logger.log("Query失败！ " + jxb.Jxbmc + " " + jxb.course.blockInfo.DisplayStr);
                             jxb.State = JxbStateEnum.Error;
                             jxb.StateStr = "错误";
                             continue;

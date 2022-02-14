@@ -240,19 +240,24 @@ namespace AutoQiangke.Service
             if (json.items.Count==0)
                 return new PreQueryCourseResult(false, "找不到教学班");
 
-            var onejxb = json.items[0];
-            CourseModel c = new CourseModel();
-            c.kch = onejxb.kcdm;
-            c.jxbcount = json.totalCount;
-            c.kcmc = onejxb.kcmc;
             var jxbs = new List<JxbModel>();
+            CourseModel c = null;
             foreach (var res1 in json.items)
-            {
-                jxbs.Add(new JxbModel(res1, c));
-                if (res1.kcdm!=onejxb.kcdm)
-                    return new PreQueryCourseResult(false, "课程冲突错误，请确保课程号正确！");
-            }
-                
+                if (res1.kcdm == querytext)
+                {
+                    if (c==null)
+                    {
+                        c = new CourseModel();
+                        c.kch = res1.kcdm;
+                        c.jxbcount = json.totalCount;
+                        c.kcmc = res1.kcmc;
+                    }
+                    jxbs.Add(new JxbModel(res1, c));
+                }
+                    
+            if (jxbs.Count == 0)
+                return new PreQueryCourseResult(false, "找不到教学班");
+
             return new PreQueryCourseResult(true, c, jxbs);
         }
 
