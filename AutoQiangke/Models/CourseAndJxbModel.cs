@@ -196,9 +196,13 @@ namespace AutoQiangke.Models
 
         public string Kcmc
         {
-            get { return course.kcmc; }
+            get {
+                if (course == null) return "";
+                return course.kcmc; 
+            }
             set
             {
+                if (course == null) return;
                 course.kcmc = value;
             }
         }//Only For Full

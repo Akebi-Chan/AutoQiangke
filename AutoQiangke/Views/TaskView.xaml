@@ -85,7 +85,7 @@
             </Button>
             <Slider Grid.Row="1" Grid.ColumnSpan="2"
                     AutoToolTipPlacement="TopLeft" LargeChange="100"
-                    Maximum="1000" Minimum="1"
+                    Maximum="5000" Minimum="1"
                     SmallChange="1" TickFrequency="100"
                     Value="{Binding Interval}" />
         </Grid>
