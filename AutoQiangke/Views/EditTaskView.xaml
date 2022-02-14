@@ -1,0 +1,101 @@
+﻿<UserControl x:Class="AutoQiangke.Views.EditTaskView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:AutoQiangke.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:converters="clr-namespace:AutoQiangke.Converters"
+             d:Background="AliceBlue" d:DesignHeight="450"
+             d:DesignWidth="800" Loaded="UserControl_Loaded"
+             mc:Ignorable="d">
+    <DockPanel Margin="0,32,0,0" LastChildFill="True">
+        <Border Width="80"
+                Background="Coral"
+                DockPanel.Dock="Right" />
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+            <Button Margin="5,0"
+                    Style="{StaticResource MaterialDesignOutlinedButton}"
+                    Click="ButtonGoBack_Click" Cursor="Hand">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="ArrowLeft" />
+                    <TextBlock Text="返回任务列表" />
+                </StackPanel>
+            </Button>
+            <TextBlock VerticalAlignment="Center"
+                       Margin="20,0"
+                       Text="更改会实时保存，无法撤销！"
+                       FontSize="14" />
+        </StackPanel>
+        <StackPanel Margin="5"
+                    DockPanel.Dock="Top" Orientation="Horizontal">
+            <TextBlock VerticalAlignment="Center"
+                       Text="标题："
+                       FontSize="16" />
+            <TextBox MinWidth="200"
+                     Margin="5"
+                     Text="{Binding Title}"
+                     DockPanel.Dock="Top" Cursor="IBeam"
+                     FontSize="16" />
+        </StackPanel>
+        <ComboBox Width="300"
+                  HorizontalAlignment="Left"
+                  Margin="5"
+                  DockPanel.Dock="Top" DisplayMemberPath="DisplayStr"
+                  ItemsSource="{DynamicResource BlockInfos}"
+                  SelectedItem="{Binding BlockInfo}"
+                  SelectionChanged="ComboBox_SelectionChanged" />
+        <StackPanel Margin="5"
+                    DockPanel.Dock="Top" Orientation="Horizontal">
+            <TextBlock VerticalAlignment="Center"
+                       Text="课程号："
+                       FontSize="14" />
+            <TextBox MinWidth="200"
+                     Margin="0,0,10,0"
+                     Text="{Binding CourseId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     TextChanged="TextBox_TextChanged" Cursor="IBeam" />
+            <TextBlock />
+            <materialDesign:Transitioner x:Name="Transitioner"
+                                         Width="24" Height="24"
+                                         SelectedIndex="1">
+                <materialDesign:Transitioner.Resources>
+                    <converters:BoolToPackIcon x:Key="BoolToPackIcon" />
+                </materialDesign:Transitioner.Resources>
+                <ProgressBar Width="20" Height="20"
+                             HorizontalAlignment="Center" VerticalAlignment="Center"
+                             Style="{StaticResource MaterialDesignCircularProgressBar}"
+                             IsIndeterminate="True"
+                             Value="0" />
+                <materialDesign:PackIcon Width="24" Height="24"
+                                         Foreground="{DynamicResource PrimaryHueMidBrush}"
+                                         Kind="{Binding IsCourseIdValid, Converter={StaticResource BoolToPackIcon}}" />
+            </materialDesign:Transitioner>
+
+            <TextBlock VerticalAlignment="Center"
+                       Margin="10,0,0,0"
+                       d:Text="高等数学II"
+                       FontSize="14">
+                <Run Text="{Binding CourseName}" />
+                <Run Text="{Binding CourseCountText}" />
+            </TextBlock>
+        </StackPanel>
+        <StackPanel Margin="5"
+                    Orientation="Horizontal" DockPanel.Dock="Top">
+            <TextBox x:Name="TextJxb"
+                     Width="100"
+                     VerticalAlignment="Center"
+                     KeyDown="TextJxb_KeyDown" />
+            <Button Margin="10,0"
+                    Content="添加"
+                    Style="{StaticResource MaterialDesignRaisedButton}"
+                    Click="ButtonAddJxb_Click" />
+        </StackPanel>
+        <Grid Margin="10">
+            <Border Background="{DynamicResource MaterialDesignBody}"
+                    CornerRadius="5" Opacity="0.05" />
+            <local:JxbCardsControl x:Name="JxbCardsControl1"
+                                   HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                   Margin="5" Type="Lite"/>
+        </Grid>
+    </DockPanel>
+</UserControl>

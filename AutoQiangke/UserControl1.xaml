@@ -1,0 +1,115 @@
+﻿<UserControl
+    x:Class="AutoQiangke.UserControl1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:AutoQiangke"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="154.001"
+    d:DesignWidth="800"
+    Background="White"
+    Loaded="UserControl_Loaded"
+    mc:Ignorable="d">
+    <Border
+        Margin="2"
+        BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+        BorderThickness="2">
+        <Grid Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <StackPanel VerticalAlignment="Center" Orientation="Vertical">
+                <Button
+                    x:Name="GoButton"
+                    materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+                    materialDesign:ButtonProgressAssist.Value="0"
+                    Click="GoButton_Click"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}">
+                    <materialDesign:PackIcon Kind="Play" />
+                </Button>
+
+                <TextBlock
+                    x:Name="text_time"
+                    MaxWidth="210"
+                    Margin="0,5,0,0"
+                    HorizontalAlignment="Center"
+                    FontSize="20"
+                    FontWeight="Bold"
+                    Foreground="{DynamicResource PrimaryHueMidBrush}"
+                    Text="{Binding TextTime}"
+                    TextWrapping="Wrap" />
+                <TextBlock
+                    MaxWidth="210"
+                    Margin="0,0"
+                    HorizontalAlignment="Center"
+                    FontSize="20"
+                    FontWeight="Bold"
+                    Foreground="{DynamicResource PrimaryHueMidBrush}"
+                    TextWrapping="Wrap">
+                    <Run Text="第" />
+                    <Run Text="{Binding Times}" />
+                    <Run Text="次尝试" />
+                </TextBlock>
+                <TextBlock
+                    x:Name="text_desc"
+                    MaxWidth="210"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="20"
+                    FontWeight="Bold"
+                    Foreground="{DynamicResource PrimaryHueMidBrush}"
+                    Text="{Binding Message}"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+            <TextBlock
+                Grid.Column="1"
+                Margin="10,0,0,0"
+                FontSize="16"
+                TextWrapping="Wrap">
+                <Run FontWeight="DemiBold" Text="课程名：" />
+                <Run FontWeight="Normal" Text="{Binding Kcmc}" />
+                <LineBreak />
+                <Run FontWeight="DemiBold" Text="课程号：" />
+                <Run FontWeight="Normal" Text="{Binding Kch}" />
+                <LineBreak />
+                <Run FontWeight="DemiBold" Text="要抢的教学班：" />
+                <Run FontWeight="Normal" Text="{Binding Jxb_qiang}" />
+                <LineBreak />
+                <Run FontWeight="DemiBold" Text="抢之前先退掉的教学班：" />
+                <Run FontWeight="Normal" Text="{Binding Jxb_tui}" />
+            </TextBlock>
+            <Button
+                x:Name="ButtonClose"
+                Grid.Column="1"
+                Width="40"
+                Height="40"
+                Padding="0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Click="ButtonClose_Click"
+                Style="{StaticResource MaterialDesignFlatButton}">
+                <materialDesign:PackIcon
+                    Width="20"
+                    Height="20"
+                    Kind="WindowClose" />
+            </Button>
+            <Slider
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                AutoToolTipPlacement="TopLeft"
+                LargeChange="100"
+                Maximum="1000"
+                Minimum="1"
+                SmallChange="1"
+                TickFrequency="100"
+                Value="{Binding Interval}" />
+        </Grid>
+
+    </Border>
+</UserControl>

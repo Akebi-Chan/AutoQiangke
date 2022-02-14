@@ -1,0 +1,181 @@
+﻿<UserControl x:Class="AutoQiangke.Views.LoginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:AutoQiangke.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ext="clr-namespace:AutoQiangke.Extensions"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:converters="clr-namespace:AutoQiangke.Converters"
+             d:Background="AliceBlue" d:DesignHeight="450"
+             d:DesignWidth="600" Loaded="UserControl_Loaded"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <converters:RevBoolToVisibilityConverter x:Key="RevBoolToVisibilityConverter"/>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Margin="0,-30,0,0" Visibility="{Binding Islogin,Converter={StaticResource RevBoolToVisibilityConverter}}"
+                    Orientation="Vertical">
+            <TextBlock HorizontalAlignment="Center"
+                       Margin="0,10,0,0"
+                       FontSize="28">
+                请登录教学信息服务网
+            </TextBlock>
+            <ListBox x:Name="RadioButtonGroupChoice"
+                     HorizontalAlignment="Center"
+                     Margin="0,10,0,0"
+                     Style="{StaticResource MaterialDesignChoiceChipPrimaryOutlineListBox}"
+                     SelectedIndex="{Binding MethodIndex}">
+                <ListBoxItem Content="使用Jaccount账号密码登录" />
+                <ListBoxItem Content="使用Cookie登录" />
+                <ListBoxItem Content="使用webview2登录" />
+            </ListBox>
+            <materialDesign:Transitioner AutoApplyTransitionOrigins="True" SelectedIndex="{Binding MethodIndex}">
+                <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
+                    <StackPanel HorizontalAlignment="Center"
+                                Margin="0,5,0,0"
+                                Orientation="Horizontal">
+                        <materialDesign:PackIcon Width="28" Height="28"
+                                                 VerticalAlignment="Bottom"
+                                                 Margin="0,0,8,0"
+                                                 Kind="Account" />
+                        <TextBox Width="300"
+                                 VerticalAlignment="Center"
+                                 Text="{Binding Account}"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 materialDesign:HintAssist.FloatingScale="0.70"
+                                 materialDesign:HintAssist.Hint="Jaccount账号"
+                                 FontSize="16" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Center"
+                                Margin="0,10,0,0"
+                                Orientation="Horizontal">
+                        <materialDesign:PackIcon Width="28" Height="28"
+                                                 VerticalAlignment="Bottom"
+                                                 Margin="0,0,8,0"
+                                                 Kind="Key" />
+                        <PasswordBox Width="300"
+                                     VerticalAlignment="Center"
+                                     Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+                                     ext:PassWordExtensions.PassWord="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     materialDesign:HintAssist.FloatingScale="0.70"
+                                     materialDesign:HintAssist.Hint="Jaccount密码" Cursor="IBeam"
+                                     FontSize="16">
+                            <i:Interaction.Behaviors>
+                                <ext:PasswordBehavior />
+                            </i:Interaction.Behaviors>
+                        </PasswordBox>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <CheckBox Margin="5,10"
+                                  Content="保存登录信息"
+                                  IsChecked="{Binding IsSaveInfo}"
+                                  Style="{StaticResource MaterialDesignCheckBox}"
+                                  FontSize="14" />
+                        <CheckBox Margin="5,10"
+                                  Content="下次自动登录"
+                                  IsChecked="{Binding IsAutoLogin}"
+                                  Style="{StaticResource MaterialDesignCheckBox}"
+                                  FontSize="14" />
+                    </StackPanel>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top"
+                               Margin="10,10,10,10"
+                               Foreground="Red"
+                               Text="请确定本程序来自于官方发布页面或者自行编译&#13;以免账号密码遭到泄露"
+                               Cursor="Hand" MouseDown="TextAPIHelp_MouseDown"
+                               TextAlignment="Center" LineHeight="24"
+                               FontSize="14" />
+                    <Button x:Name="AccountLoginButton"
+                            Width="200"
+                            Margin="0,5,0,0"
+                            Content="登录"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            Click="LoginButton_Click" Cursor="Hand" />
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center">
+                    <StackPanel HorizontalAlignment="Center"
+                                Margin="0,10,0,10"
+                                Orientation="Horizontal">
+                        <materialDesign:PackIcon Width="32" Height="32"
+                                                 VerticalAlignment="Bottom"
+                                                 Margin="0,0,8,0"
+                                                 Kind="Cookie" />
+                        <TextBox Width="300"
+                                 VerticalAlignment="Center"
+                                 Text="{Binding Cookie}"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 materialDesign:HintAssist.FloatingScale="0.70"
+                                 materialDesign:HintAssist.Hint="Cookie"
+                                 materialDesign:HintAssist.HelperText="必须包含有效的JSESSIONID和kc@xxxxxxx"
+                                 Cursor="IBeam"
+                                 FontSize="20" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <CheckBox Margin="5,10"
+                                  Content="保存登录信息"
+                                  IsChecked="{Binding IsSaveInfo}"
+                                  Style="{StaticResource MaterialDesignCheckBox}"
+                                  FontSize="14" />
+                        <CheckBox Margin="5,10"
+                                  Content="下次自动登录"
+                                  IsChecked="{Binding IsAutoLogin}"
+                                  Style="{StaticResource MaterialDesignCheckBox}"
+                                  FontSize="14" />
+                    </StackPanel>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top"
+                               Margin="0,0,0,10"
+                               Foreground="Blue"
+                               Text="什么是Cookie？我怎样得到Cookie？"
+                               Cursor="Hand" MouseDown="TextAPIHelp_MouseDown"
+                               TextDecorations="Underline"
+                               FontSize="12" />
+                    <Button x:Name="CookieLoginButton"
+                            Width="200"
+                            Margin="0,10,0,0"
+                            Content="登录"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            Click="LoginButton_Click" Cursor="Hand" />
+                </StackPanel>
+                <Grid>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Text="Webview" />
+                </Grid>
+            </materialDesign:Transitioner>
+
+            <TextBlock TextWrapping="Wrap" Margin="10,10,10,10"
+                       Foreground="Red" HorizontalAlignment="Center"
+                       Text="{Binding ErrorText}" Visibility="Collapsed"
+                       FontSize="16" />
+        </StackPanel>
+        <Grid d:Background="AliceBlue" Visibility="{Binding Islogin,Converter={StaticResource BoolToVisibilityConverter}}">
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="已登录" FontSize="40" FontWeight="Light" HorizontalAlignment="Center"/>
+                <Border Margin="0,5,0,20"
+                        DockPanel.Dock="Top"
+                        BorderBrush="{DynamicResource MaterialDesignDivider}"
+                        BorderThickness="0,1,0,0" />
+                <TextBlock Margin="0,6" HorizontalAlignment="Center">
+                        <Run Text="账号："
+                             FontWeight="Black"
+                             FontSize="20" />
+                        <Run Text="{Binding Account}" FontSize="20" />
+                </TextBlock>
+                <TextBlock Margin="0,6" HorizontalAlignment="Center">
+                        <Run Text="姓名："
+                             FontWeight="Black"
+                             FontSize="20" />
+                        <Run Text="{Binding StuName}" FontSize="20" />
+                </TextBlock>
+                <TextBlock Margin="0,6" HorizontalAlignment="Center">
+                        <Run Text="学号："
+                             FontWeight="Black"
+                             FontSize="20" />
+                        <Run Text="{Binding Xh}" FontSize="20" />
+                </TextBlock>
+                <Button Margin="0,20" Content="退出登录" Width="200" Click="LogoutButton_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

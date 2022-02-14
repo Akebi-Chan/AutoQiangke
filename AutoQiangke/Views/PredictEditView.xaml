@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="AutoQiangke.Views.PredictEditView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:AutoQiangke.Views"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             Width="403" Height="270"
+             d:Background="AliceBlue"
+             mc:Ignorable="d">
+    <DockPanel Margin="15" LastChildFill="False">
+        <TextBlock Margin="2,0,0,0"
+                   Text="标题"
+                   DockPanel.Dock="Top"
+                   FontSize="18" />
+        <TextBox Margin="5,5" FontSize="14"
+                 Text="{Binding Title}"
+                 DockPanel.Dock="Top" Cursor="IBeam" />
+        <Border Margin="-8,5,-8,5"
+                DockPanel.Dock="Top"
+                BorderBrush="{DynamicResource MaterialDesignDivider}"
+                BorderThickness="0,1,0,0" />
+        <TextBlock Margin="2,0,0,0"
+                   Text="匹配条件"
+                   DockPanel.Dock="Top"
+                   FontSize="18" />
+        <DockPanel Margin="0,5"
+                   LastChildFill="True" DockPanel.Dock="Top">
+            <CheckBox Margin="5,0"
+                      Content="反转"
+                      IsChecked="{Binding Rev1}" />
+            <ComboBox Width="100"
+                      Margin="5,0"
+                      ItemsSource="{Binding Verbs}"
+                      DisplayMemberPath="Name"
+                      SelectedItem="{Binding Verb1}" />
+            <TextBox Margin="5,0"
+                     Text="{Binding Arg1}"/>
+        </DockPanel>
+        <DockPanel Margin="70,5"
+                   LastChildFill="False" DockPanel.Dock="Top">
+            <RadioButton Margin="5,0"
+                         Content="与"
+                         IsChecked="{Binding Joiner}"
+                         VerticalContentAlignment="Center" />
+            <RadioButton Margin="5,0"
+                         Content="或"
+                         IsChecked="{Binding RevJoiner}"
+                         VerticalContentAlignment="Center" />
+        </DockPanel>
+        <DockPanel Margin="0,5"
+                   LastChildFill="True" DockPanel.Dock="Top">
+            <CheckBox Margin="5,0"
+                      Content="反转"
+                      IsChecked="{Binding Rev2}" />
+            <ComboBox Width="100"
+                      Margin="5,0"
+                      ItemsSource="{Binding Verbs}"
+                      DisplayMemberPath="Name"
+                      SelectedItem="{Binding Verb2}" />
+            <TextBox Margin="5,0"
+                     Text="{Binding Arg2}"/>
+        </DockPanel>
+        <StackPanel HorizontalAlignment="Right"
+                    Orientation="Horizontal" DockPanel.Dock="Bottom">
+            <Button Width="100"
+                    Margin="5,0"
+                    Content="确定" Click="ButtonOK_Click" Cursor="Hand"/>
+            <Button Width="100"
+                    Margin="5,0"
+                    Content="取消" Click="ButtonCancel_Click"/>
+        </StackPanel>
+    </DockPanel>
+</UserControl>

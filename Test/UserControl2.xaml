@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="Test.UserControl2"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Test"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="200">
+    <Grid>
+        <StackPanel Orientation="Vertical" Grid.Column="2">
+            <Button Content="NewList" Margin="10" Click="NewListButton_Click"/>
+            <Button Content="NewItem" Margin="10" Click="NewItemButton_Click"/>
+            <Button Content="EditItemProperty" Margin="10" Click="EditItemPropertyButton_Click"/>
+            <Button Content="EditItem" Margin="10" Click="EditItemButton_Click"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

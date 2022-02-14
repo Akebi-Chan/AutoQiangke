@@ -1,0 +1,56 @@
+﻿<Window x:Class="AutoQiangke.Views.BaseUriInputWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:AutoQiangke.Views"
+        Title="基本信息补充" WindowStartupLocation="CenterScreen"
+        Width="429" Height="240"
+        mc:Ignorable="d">
+    <StackPanel HorizontalAlignment="Center"
+                Margin="10"
+                Orientation="Vertical">
+        <TextBlock HorizontalAlignment="Center"
+                   Text="请输入教务系统基础网址"
+                   FontSize="20" />
+        <StackPanel HorizontalAlignment="Center"
+                    Margin="0,5,0,0"
+                    Orientation="Horizontal">
+            <materialDesign:PackIcon Width="32" Height="32"
+                                     VerticalAlignment="Bottom"
+                                     Margin="0,0,8,0"
+                                     Kind="Web" />
+            <TextBox x:Name="TextBaseUri"
+                     Width="300"
+                     VerticalAlignment="Center"
+                     Text="{Binding BaseUri}"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     materialDesign:HintAssist.Hint="API端点（Base Uri）"
+                     materialDesign:HintAssist.FloatingScale="0.70"
+                     FontSize="20" />
+        </StackPanel>
+        <Grid HorizontalAlignment="Center" Margin="0,10,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="例如：" FontSize="14" />
+            <TextBlock Grid.Row="0" Grid.Column="1"
+                       Text="https://i.sjtu.edu.cn"
+                       FontSize="14" />
+            <TextBlock Grid.Row="1" Grid.Column="1"
+                       Text="https://zdbk.zju.edu.cn/jwglxt"
+                       FontSize="14" />
+        </Grid>
+        <Button Width="200" Height="40"
+                Margin="0,10,0,0"
+                Content="确定"
+                Click="Button_Click"
+                FontSize="20" />
+    </StackPanel>
+</Window>

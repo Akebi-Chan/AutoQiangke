@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="AutoQiangke.Views.JxbCardFull"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:AutoQiangke.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:converters="clr-namespace:AutoQiangke.Converters"
+             xmlns:sys1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives"
+             Width="200" Height="155"
+             d:Background="AliceBlue" AllowDrop="False"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <converters:JxbStateToColor x:Key="JxbStateToColor" />
+    </UserControl.Resources>
+    <Border Margin="3" Padding="0"
+            Background="{DynamicResource MaterialDesignPaper}"
+            d:BorderBrush="Firebrick" BorderThickness="3"
+            BorderBrush="{Binding State, Converter={StaticResource JxbStateToColor}}">
+        <DockPanel Margin="3" LastChildFill="True">
+            <TextBlock HorizontalAlignment="Center"
+                       Foreground="Black"
+                       DockPanel.Dock="Top" FontWeight="Bold"
+                       FontSize="14">
+                <Run Text="※" />
+                <Run Text="{Binding StateStr}" d:Text="已选" />
+                <Run Text="※" />
+            </TextBlock>
+            <Border Margin="0,2,0,2"
+                    DockPanel.Dock="Top"
+                    BorderBrush="{DynamicResource MaterialDesignDivider}"
+                    BorderThickness="0,1,0,0" />
+            <ComboBox x:Name="ComboBox1"
+                      Margin="3,1" 
+                      materialDesign:HintAssist.Hint="请选择板块" DockPanel.Dock="Top"
+                      DisplayMemberPath="DisplayStr"
+                      ItemsSource="{DynamicResource BlockInfos}"
+                      SelectedItem="{Binding BlockInfo}"
+                      SelectionChanged="ComboBox_SelectionChanged" />
+            <TextBlock Margin="4,2,3,0"
+                       Text="{Binding Kcmc}"
+                       d:Text="(2021-2022-2)-MATH1202-53" DockPanel.Dock="Top" />
+            <TextBlock Margin="4,2,3,0"
+                       Text="{Binding Jxbmc}"
+                       d:Text="高等数学" DockPanel.Dock="Top" />
+            <Grid Margin="4,2,3,0" DockPanel.Dock="Top">
+                <TextBlock Text="{Binding Teacher}"
+                           d:Text="教师名"
+                           ToolTip="{Binding Teacher}" />
+            </Grid>
+            <Grid Margin="4,2,3,0" DockPanel.Dock="Top">
+                <TextBlock Text="{Binding CourseTime}"
+                           d:Text="星期一第1-2节{1-5周};星期三第1-2节{1-5周};星期四第1-2节{1-5周};星期五第1-2节{5周}"
+                           ToolTip="{Binding CourseTime}" />
+            </Grid>
+            <Grid Margin="4,2,3,0" DockPanel.Dock="Top">
+                <TextBlock Text="{Binding CourseLocation}"
+                           d:Text="教学地点"
+                           ToolTip="{Binding CourseLocation}" />
+            </Grid>
+        </DockPanel>
+    </Border>
+</UserControl>

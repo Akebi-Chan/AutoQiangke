@@ -1,0 +1,157 @@
+﻿<Window
+    x:Class="AutoQiangke.MainWindow1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:AutoQiangke"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="AutoQiangke"
+    Width="800"
+    Height="450"
+    Loaded="Window_Loaded"
+    mc:Ignorable="d">
+    <Grid x:Name="maingrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="240" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <DockPanel Margin="0">
+            <TextBlock
+                x:Name="TextTitle"
+                Margin="0,5,0,5"
+                HorizontalAlignment="Center"
+                DockPanel.Dock="Top"
+                FontSize="30"
+                Text="DDIOSTS"
+                TextWrapping="Wrap" />
+            <Border
+                Margin="0,5,0,0"
+                BorderBrush="{DynamicResource MaterialDesignDivider}"
+                BorderThickness="0,1,0,0"
+                DockPanel.Dock="Top" />
+            <Expander
+                HorizontalAlignment="Stretch"
+                materialDesign:ExpanderAssist.HorizontalHeaderPadding="0"
+                DockPanel.Dock="Top"
+                Foreground="#FF242424"
+                IsExpanded="False">
+                <Expander.Header>
+                    <TextBlock
+                        Margin="15,10"
+                        FontSize="18"
+                        Text="登录" />
+                </Expander.Header>
+                <StackPanel Orientation="Vertical">
+                    
+                </StackPanel>
+            </Expander>
+            <Expander
+                HorizontalAlignment="Stretch"
+                materialDesign:ExpanderAssist.HorizontalHeaderPadding="0"
+                DockPanel.Dock="Top"
+                Foreground="#FF242424"
+                IsExpanded="False">
+                <Expander.Header>
+                    <TextBlock
+                        Margin="15,10"
+                        FontSize="18"
+                        Text="手动选课" />
+                </Expander.Header>
+                <StackPanel Orientation="Vertical">
+                    <TextBox
+                        x:Name="Text_kch_id"
+                        Margin="15,2"
+                        materialDesign:HintAssist.Hint="课程号 kch_id" />
+                    <TextBox
+                        x:Name="Text_jxb_ids"
+                        Margin="15,2"
+                        materialDesign:HintAssist.Hint="256位课号 jxb_ids" />
+                    <Button
+                        Width="100"
+                        Height="40"
+                        Margin="15,10"
+                        Padding="0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+                        materialDesign:ButtonProgressAssist.IsIndicatorVisible="False"
+                        materialDesign:ButtonProgressAssist.Value="-1"
+                        Click="ButtonXuanke_Click"
+                        Style="{StaticResource MaterialDesignRaisedButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Width="16"
+                                Height="16"
+                                VerticalAlignment="Center"
+                                Kind="PaperAirplane" />
+                            <TextBlock
+                                Margin="10,0,0,0"
+                                VerticalAlignment="Center"
+                                FontSize="18"
+                                Text="选课" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Expander>
+            <Expander
+                HorizontalAlignment="Stretch"
+                materialDesign:ExpanderAssist.HorizontalHeaderPadding="0"
+                DockPanel.Dock="Top"
+                Foreground="#FF242424"
+                IsExpanded="True">
+                <Expander.Header>
+                    <TextBlock
+                        Margin="15,10"
+                        FontSize="18"
+                        Text="自动抢课" />
+                </Expander.Header>
+                <StackPanel Orientation="Vertical">
+                    <TextBox
+                        x:Name="Text_kch"
+                        Margin="15,2"
+                        materialDesign:HintAssist.Hint="课程号" />
+                    <TextBox
+                        x:Name="Text_jxb"
+                        Margin="15,2"
+                        materialDesign:HintAssist.Hint="教学班号（英文逗号隔开）" />
+                    <TextBox
+                        x:Name="Text_tui"
+                        Margin="15,2"
+                        materialDesign:HintAssist.Hint="选之前退的课" />
+                    <Button
+                        x:Name="ButtonAdd"
+                        Width="100"
+                        Height="40"
+                        Margin="15,10"
+                        Padding="0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+                        materialDesign:ButtonProgressAssist.IsIndicatorVisible="False"
+                        materialDesign:ButtonProgressAssist.Value="-1"
+                        Click="ButtonAdd_Click"
+                        Style="{StaticResource MaterialDesignRaisedButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Width="16"
+                                Height="16"
+                                VerticalAlignment="Center"
+                                Kind="PaperAirplane" />
+                            <TextBlock
+                                Margin="10,0,0,0"
+                                VerticalAlignment="Center"
+                                FontSize="18"
+                                Text="添加" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Expander>
+            <Button Click="Button_tiyu_Click"/>
+        </DockPanel>
+        <ScrollViewer Grid.Column="1" Margin="5,10,0,15">
+            <StackPanel x:Name="MainStackPanel" Orientation="Vertical" />
+        </ScrollViewer>
+    </Grid>
+
+</Window>

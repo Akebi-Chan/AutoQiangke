@@ -1,0 +1,114 @@
+﻿<UserControl x:Class="AutoQiangke.Views.WelcomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:AutoQiangke.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="450" d:DesignWidth="600"
+             d:Background="AliceBlue" Margin="0,32,0,0"
+             mc:Ignorable="d" Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.2*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="0.2*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="1" Grid.Column="1">
+            <TextBlock x:Name="WelcomeText"
+                       HorizontalAlignment="Center"
+                       Margin="0,10,0,0"
+                       DockPanel.Dock="Top"
+                       FontSize="40">
+                欢迎使用！
+            </TextBlock>
+            <Grid>
+                <StackPanel Orientation="Vertical">
+                    <Button Height="50"
+                            Margin="0,20,0,0" Padding="0"
+                            Background="{x:Null}"
+                            Click="Button1_Click"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"
+                            Style="{StaticResource MaterialDesignPaperButton}">
+                        <DockPanel>
+                            <materialDesign:PackIcon Width="28" Height="28"
+                                                     VerticalAlignment="Center"
+                                                     Margin="10,0"
+                                                     Kind="Regex" />
+                            <materialDesign:PackIcon Width="28" Height="28"
+                                                     VerticalAlignment="Center"
+                                                     Margin="10,0"
+                                                     DockPanel.Dock="Right" Kind="ArrowRight" />
+                            <TextBlock VerticalAlignment="Center" FontSize="22">课程板块预测设置</TextBlock>
+                        </DockPanel>
+                    </Button>
+                    <Button Height="50"
+                            Margin="0,10,0,0" Padding="0"
+                            Background="{x:Null}"
+                            Click="Button2_Click"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"
+                            Style="{StaticResource MaterialDesignPaperButton}">
+                        <DockPanel>
+                            <materialDesign:PackIcon Width="28" Height="28"
+                                                     VerticalAlignment="Center"
+                                                     Margin="10,0"
+                                                     Kind="FormatListBulleted" />
+                            <materialDesign:PackIcon Width="28" Height="28"
+                                                     VerticalAlignment="Center"
+                                                     Margin="10,0"
+                                                     DockPanel.Dock="Right" Kind="ArrowRight" />
+                            <TextBlock VerticalAlignment="Center" FontSize="22">任务列表</TextBlock>
+                        </DockPanel>
+                    </Button>
+                    <Button Height="50"
+                            Margin="0,10,0,0" Padding="0"
+                            Background="{x:Null}"
+                            Click="Button3_Click"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"
+                            Style="{StaticResource MaterialDesignPaperButton}" Cursor="Hand">
+                        <DockPanel>
+                            <materialDesign:PackIcon Width="28" Height="28"
+                                                     VerticalAlignment="Center"
+                                                     Margin="10,0"
+                                                     Kind="Airplane" />
+                            <materialDesign:PackIcon Width="28" Height="28"
+                                                     VerticalAlignment="Center"
+                                                     Margin="10,0"
+                                                     DockPanel.Dock="Right" Kind="ArrowRight" />
+                            <TextBlock VerticalAlignment="Center" FontSize="22">时光机</TextBlock>
+                        </DockPanel>
+                    </Button>
+                    <Button Height="50"
+                            Margin="0,10,0,0" Padding="0"
+                            Background="{x:Null}"
+                            Click="Button4_Click"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"
+                            Style="{StaticResource MaterialDesignPaperButton}"
+                            Cursor="Hand">
+                        <DockPanel>
+                            <materialDesign:PackIcon Width="28" Height="28"
+                                                     VerticalAlignment="Center"
+                                                     Margin="10,0"
+                                                     Kind="Web" />
+                            <materialDesign:PackIcon Width="28" Height="28"
+                                                     VerticalAlignment="Center"
+                                                     Margin="10,0"
+                                                     DockPanel.Dock="Right" Kind="ArrowRight" />
+                            <TextBlock VerticalAlignment="Center" FontSize="22">在浏览器打开教学信息服务网</TextBlock>
+                        </DockPanel>
+                    </Button>
+                </StackPanel>
+
+            </Grid>
+        </DockPanel>
+    </Grid>
+
+</UserControl>

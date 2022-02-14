@@ -1,0 +1,31 @@
+﻿<Window x:Class="Test.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Test"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="MainWindow"
+        Width="800" Height="400"
+        d:Background="AliceBlue" BorderBrush="#FFF55656"
+        mc:Ignorable="d">
+    <!--<local:JxbCardsControl/>-->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <local:UserControl1 Grid.ColumnSpan="2" x:Name="mycontrol" Items="{Binding Items,Mode=TwoWay}"/>
+        <StackPanel Orientation="Vertical" Grid.Column="2">
+            <CheckBox x:Name="CheckBox1" Content="修改地点：修改源值" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Button Content="NewList" Margin="10" Click="NewListButton_Click"/>
+            <Button Content="NewItem" Margin="10" Click="NewItemButton_Click"/>
+            <Button Content="EditItemProperty" Margin="10" Click="EditItemPropertyButton_Click"/>
+            <Button Content="EditItem" Margin="10" Click="EditItemButton_Click"/>
+            <Button Content="RaisePropertyChanged" Margin="10" Click="RaisePropertyChangedButton_Click"/>
+            <Button Content="NewWindow" Style="{StaticResource MaterialDesignPaperButton}" Margin="10" Click="NewWindowButton_Click"/>
+        </StackPanel>
+    </Grid>
+    
+</Window>

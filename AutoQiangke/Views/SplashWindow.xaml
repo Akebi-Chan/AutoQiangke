@@ -1,0 +1,24 @@
+﻿<Window x:Class="AutoQiangke.Views.SplashWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoQiangke.Views" WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d" WindowStyle="None" ResizeMode="CanMinimize"
+        Title="SplashScreen" Height="500" Width="786">
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="-1" />
+    </WindowChrome.WindowChrome>
+    <Window.Template>
+        <ControlTemplate TargetType="Window">
+            <Border Background="Transparent">
+                <ContentPresenter ClipToBounds="True" />
+            </Border>
+        </ControlTemplate>
+    </Window.Template>
+    <Canvas>
+        <Image Source="/Resources/splash.png" Height="500" Width="786"/>
+        <TextBlock Text="程序启动中……" Canvas.Left="300" Canvas.Top="294" FontSize="18" FontWeight="Black" Foreground="#8c6fb5"/>
+        <TextBlock Text="{Binding Message}" d:Text="读取设置" Canvas.Left="300" Canvas.Top="320" FontSize="18" FontWeight="Black" Foreground="#8c6fb5"/>
+    </Canvas>
+</Window>
