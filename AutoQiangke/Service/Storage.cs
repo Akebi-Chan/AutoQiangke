@@ -334,7 +334,7 @@ namespace AutoQiangke.Service
             this.courseCountText = task.CourseCountText;
             this.interval = task.Interval;
             this.times = task.Times;
-            this.state = task.State;
+            this.state = task.State == TaskState.Started ? TaskState.Wait : task.State;
             this.type = task.type;
             this.message = task.Message;
             this.id = task.id;
@@ -457,7 +457,7 @@ namespace AutoQiangke.Service
             this.jxbmc = jxb.jxbmc;
             this.yxzrs = jxb.yxzrs;
             this.jxb_shortid = jxb.Jxb_shortid;
-            this.state = jxb.State;
+            this.state = jxb.State == JxbStateEnum.Chosen || jxb.State == JxbStateEnum.Known ? JxbStateEnum.Ready : jxb.State;
             this.stateStr = jxb.StateStr;
         }
         public JxbModel ToJxbModel()

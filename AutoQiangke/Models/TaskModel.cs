@@ -397,12 +397,14 @@ namespace AutoQiangke.Models
                 {
                     var jxb = Jxbs[i][j];
                     if (jxb.State == JxbStateEnum.Known)
+                    {
                         if (int.Parse(jxb.yxzrs) < int.Parse(jxb.jxbrl))
                         {
                             bool chosenchanged = TryXuanke(i, j);
                             if (chosenchanged)
                             {
-                                Thread t = new Thread(()=> {
+                                Thread t = new Thread(() =>
+                                {
                                     Course.GetChosenJxbs();
                                     CheckIsChosenJxbs();
                                 });
@@ -410,7 +412,20 @@ namespace AutoQiangke.Models
                             }
                             return true;
                         }
-                }
+                    }
+                    else if (jxb.State == JxbStateEnum.Chosen)
+                    {
+                        if (i == 0)
+                        {
+                            Message = "任务完成";
+                            return false;
+                        }
+                        else
+                        {
+                            return true;
+                        }
+                    }
+                }//For
             Message = "容量已满";
             return true;
         }
@@ -457,6 +472,7 @@ namespace AutoQiangke.Models
                 {
                     var jxb = Jxbs[i][j];
                     if (jxb.State == JxbStateEnum.Known)
+                    {
                         if (int.Parse(jxb.yxzrs) < int.Parse(jxb.jxbrl))
                         {
                             bool chosenchanged = TryXuanke(i, j);
@@ -471,6 +487,19 @@ namespace AutoQiangke.Models
                             }
                             return true;
                         }
+                    }
+                    else if (jxb.State == JxbStateEnum.Chosen)
+                    {
+                        if (i == 0)
+                        {
+                            Message = "任务完成";
+                            return false;
+                        }
+                        else
+                        {
+                            return true;
+                        }
+                    }
                 }
             Message = "容量已满";
             return true;
