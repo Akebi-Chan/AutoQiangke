@@ -318,12 +318,14 @@ namespace AutoQiangke.Service
                 "bh_id=" + BasicInfo.bh_id + "&" +
                 "xbm=" + BasicInfo.xbm + "&" +
                 "xslbdm=" + BasicInfo.xslbdm + "&" +
+                "mzm=" + BasicInfo.mzm + "&" +
                 "ccdm=" + BasicInfo.ccdm + "&" +
                 "xsbj=" + BasicInfo.xsbj + "&" +
                 "sfkknj=" + blockInfo.sfkknj + "&" +
                 "sfkkzy=" + blockInfo.sfkkzy + "&" +
                 "kzybkxy=" + blockInfo.kzybkxy + "&" +
                 "sfznkx=" + blockInfo.sfznkx + "&" +
+                "zdkxms=" + blockInfo.zdkxms + "&" +
                 "rwzdkxmslx=" + blockInfo.zdkxms + "&" +
                 "sfkxq=" + blockInfo.sfkxq + "&" +
                 "sfkcfx=" + blockInfo.sfkcfx + "&" +
@@ -335,6 +337,7 @@ namespace AutoQiangke.Service
                 "xkxnm=" + BasicInfo.xkxnm + "&" +
                 "xkxqm=" + BasicInfo.xkxqm + "&" +
                 "kklxdm=" + blockInfo.kklxdm + "&" +
+                "bbhzxjxb=" + blockInfo.bbhzxjxb + "&" +
                 "rlkz=" + blockInfo.rlkz + "&" +
                 "xkzgbj=" + blockInfo.xkzgbj + "&" +
                 "kspage=1&jspage=100";
@@ -356,6 +359,8 @@ namespace AutoQiangke.Service
                 "bh_id=" + BasicInfo.bh_id + "&" +
                 "xbm=" + BasicInfo.xbm + "&" +
                 "xslbdm=" + BasicInfo.xslbdm + "&" +
+                "mzm=" + BasicInfo.mzm + "&" +
+                "bbhzxjxb=" + blockInfo.bbhzxjxb + "&" +
                 "ccdm=" + BasicInfo.ccdm + "&" +
                 "xsbj=" + BasicInfo.xsbj + "&" +
                 "sfkknj=" + blockInfo.sfkknj + "&" +

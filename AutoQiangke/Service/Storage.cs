@@ -184,6 +184,7 @@ namespace AutoQiangke.Service
         public string predictname;
         public string kklxdm;
         public string xkkz_id;
+        public string bbhzxjxb;
         public BlockMatchRule rule;
 
         public bool isdetailed;
@@ -221,6 +222,7 @@ namespace AutoQiangke.Service
             this.name = b.name;
             this.predictname = b.predictname;
             this.kklxdm = b.kklxdm;
+            this.bbhzxjxb = b.bbhzxjxb;
             this.xkkz_id = b.xkkz_id;
             this.rule = b.rule;
             this.isdetailed = b.isdetailed;
@@ -266,6 +268,7 @@ namespace AutoQiangke.Service
             b.name = this.name;
             b.predictname = this.predictname;
             b.kklxdm = this.kklxdm;
+            b.bbhzxjxb = this.bbhzxjxb;
             b.xkkz_id = this.xkkz_id;
             b.rule = this.rule;
             b.isdetailed = this.isdetailed;

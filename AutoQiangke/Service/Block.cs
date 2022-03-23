@@ -85,6 +85,7 @@ namespace AutoQiangke.Service
                 if (i.Groups[1].Value == "xkxskcgskg") blockInfo.xkxskcgskg = i.Groups[3].Value;
                 if (i.Groups[1].Value == "jxbzcxskg") blockInfo.jxbzcxskg = i.Groups[3].Value;
                 if (i.Groups[1].Value == "txbsfrl") blockInfo.txbsfrl = i.Groups[3].Value;
+                if (i.Groups[1].Value == "bbhzxjxb") blockInfo.bbhzxjxb = i.Groups[3].Value;
 
                 if (i.Groups[1].Value == "xklcmc") Application.Current.Resources["xklcmc"] = i.Groups[3].Value;
                 if (i.Groups[1].Value == "xklc") blockInfo.xklc = i.Groups[3].Value;
@@ -229,6 +230,7 @@ namespace AutoQiangke.Service
             block_predict.kklxdm = block_original.kklxdm;
             block_predict.xkkz_id = block_original.xkkz_id;
             block_predict.isdetailed = block_original.isdetailed;
+            block_predict.bbhzxjxb = block_original.bbhzxjxb;
             blockInfos.Remove(block_original);
             block_predict.Refresh();
         }

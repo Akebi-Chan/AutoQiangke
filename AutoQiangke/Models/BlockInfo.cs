@@ -39,6 +39,8 @@ namespace AutoQiangke.Models
         public string txbsfrl;
         public string xklc;
 
+        public string bbhzxjxb;
+
         public string name;
         public string predictname;
         public string kklxdm;
@@ -102,6 +104,7 @@ namespace AutoQiangke.Models
             txbsfrl = null;
             name = null;
             kklxdm = null;
+            bbhzxjxb = null;
             xkkz_id = null;
             isdetailed = false;
             Refresh();

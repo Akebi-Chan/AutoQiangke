@@ -26,6 +26,7 @@ namespace AutoQiangke.Service
         public static string xbm;
         public static string xslbdm;
         public static string ccdm;
+        public static string mzm;
         public static string xz;
         public static string xsbj;
         public static string xkxnm;
@@ -145,6 +146,7 @@ namespace AutoQiangke.Service
                 if (i.Groups[1].Value == "jg_id_1") jg_id = i.Groups[3].Value;
                 if (i.Groups[1].Value == "iskxk") iskxk = i.Groups[3].Value;
                 if (i.Groups[1].Value == "xszxzt") xszxzt = i.Groups[3].Value;
+                if (i.Groups[1].Value == "mzm") mzm = i.Groups[3].Value;
             }
 
             if (iskxk != "1")
