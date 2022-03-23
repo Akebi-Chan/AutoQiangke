@@ -25,6 +25,7 @@
             <Button Content="EditItem" Margin="10" Click="EditItemButton_Click"/>
             <Button Content="RaisePropertyChanged" Margin="10" Click="RaisePropertyChangedButton_Click"/>
             <Button Content="NewWindow" Style="{StaticResource MaterialDesignPaperButton}" Margin="10" Click="NewWindowButton_Click"/>
+            <Button Content="Download" Style="{StaticResource MaterialDesignPaperButton}" Margin="10" Click="DownloadButton_Click"/>
         </StackPanel>
     </Grid>
     

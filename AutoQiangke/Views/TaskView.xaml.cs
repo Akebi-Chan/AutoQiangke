@@ -66,5 +66,10 @@ namespace AutoQiangke.Views
             var w = new LogWindow(taskModel.logger);
             w.Show();
         }
+
+        private void JxbSummaryView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Common.TaskSwitchMessager.Publish(taskModel);
+        }
     }
 }

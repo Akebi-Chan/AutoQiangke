@@ -422,6 +422,7 @@ namespace AutoQiangke.Models
                         }
                         else
                         {
+                            Message = "容量已满";
                             return true;
                         }
                     }
@@ -453,7 +454,7 @@ namespace AutoQiangke.Models
                         var res = Course.Query(jxb.Jxbmc, jxb.course.blockInfo);
                         if (!res.success)
                         {
-                            Common.logger.log("Query失败！ " + jxb.Jxbmc + " " + jxb.course.blockInfo.DisplayStr);
+                            Common.logger.log("Query失败！ " + res.message + "(" +jxb.Jxbmc + " " + jxb.course.blockInfo.DisplayStr+")");
                             jxb.State = JxbStateEnum.Error;
                             jxb.StateStr = "错误";
                             continue;
@@ -497,6 +498,7 @@ namespace AutoQiangke.Models
                         }
                         else
                         {
+                            Message = "容量已满";
                             return true;
                         }
                     }

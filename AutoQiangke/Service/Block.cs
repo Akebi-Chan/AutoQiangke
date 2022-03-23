@@ -159,7 +159,8 @@ namespace AutoQiangke.Service
             {
                 oldblock.Predictname = newblock.Predictname;
                 oldblock.rule = newblock.rule;
-                SearchForMatch(oldblock);
+                var isMatch = SearchForMatch(oldblock);
+                if (!isMatch) oldblock.Refresh();
             }
             else if (oldblock.type == BlockType.Matched)
             {
@@ -172,10 +173,16 @@ namespace AutoQiangke.Service
                     if (splitblock.type != BlockType.Matched)
                         SearchForMatch(splitblock);
                 }
+                else
+                {
+                    oldblock.Predictname = newblock.Predictname;
+                    oldblock.rule = newblock.rule;
+                    oldblock.Refresh();
+                }
             }
         }
 
-        public static void SearchForMatch(BlockInfo block0)
+        public static bool SearchForMatch(BlockInfo block0)
         {
             foreach (var block in blockInfos)
             {
@@ -183,15 +190,16 @@ namespace AutoQiangke.Service
                     if (block.rule.isMatch(block0.name))
                     {
                         MatchTwoBlock(block, block0);
-                        break;
+                        return true;
                     }
                 if (block.type == BlockType.Original && block0.type == BlockType.Pending)
                     if (block0.rule.isMatch(block.name))
                     {
                         MatchTwoBlock(block0, block);
-                        break;
+                        return true;
                     }
             }
+            return false;
         }
 
         private static void MatchTwoBlock(BlockInfo block_predict, BlockInfo block_original)

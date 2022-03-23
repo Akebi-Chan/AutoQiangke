@@ -1,4 +1,5 @@
 ﻿using AutoQiangke.Helpers;
+using DownKyi.Core.Downloader;
 using Easy.MessageHub;
 using Newtonsoft.Json;
 using System;
@@ -93,6 +94,15 @@ namespace Test
         private void RaisePropertyChangedButton_Click(object sender, RoutedEventArgs e)
         {
             vm.RaisePropertyChanged("Items");
+        }
+
+        private void DownloadButton_Click(object sender, RoutedEventArgs e)
+        {
+            //MultiThreadDownloader d = new MultiThreadDownloader("https://dldir1.qq.com/qqfile/qq/PCQQ9.5.8/QQ9.5.8.28186.exe", "D:\\qq.exe", 4);
+            //d.Start();
+            WebClient client = new WebClient();
+            client.DownloadString("https://www.baidu.com/");
+            client.DownloadString("https://www.baidu.com/more/");  
         }
     }
 

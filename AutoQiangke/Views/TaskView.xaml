@@ -61,7 +61,7 @@
                         HorizontalAlignment="Stretch"
                         Background="#11000000"
                         CornerRadius="5" >
-                    <local:JxbSummaryView Jxbs="{Binding Jxbs}" Margin="4"/>
+                    <local:JxbSummaryView Jxbs="{Binding Jxbs}" Margin="4" MouseDoubleClick="JxbSummaryView_MouseDoubleClick"/>
                 </Border>
                 <StackPanel Orientation="Horizontal">
                     <Button Padding="1" Click="ButtonDetail_Click"

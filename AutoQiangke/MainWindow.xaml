@@ -7,7 +7,7 @@
         xmlns:themes="clr-namespace:Walterlv.Themes"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="AutoQiangke"
-        Width="800" Height="550"
+        Width="800" Height="650"
         Padding="0"
         Background="White"
         Style="{StaticResource Style.Window.Universal}"
@@ -53,6 +53,9 @@
                            FontSize="20" />
                 <TextBlock HorizontalAlignment="Center"
                            Text="分布式数据库IO压力测试系统"
+                           DockPanel.Dock="Top" />
+                <TextBlock HorizontalAlignment="Center"
+                           Text="beta1.0" Margin="0,2,0,0"
                            DockPanel.Dock="Top" />
                 <Border Margin="0,5,0,0"
                         DockPanel.Dock="Top"

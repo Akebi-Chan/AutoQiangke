@@ -80,7 +80,13 @@ namespace AutoQiangke.Service
                 var json = File.ReadAllText(BasePath + "BlockInfos.json");
                 List<BlockInfoStorageFull> list = JsonConvert.DeserializeObject<List<BlockInfoStorageFull>>(json);
                 foreach (var b in list)
-                    Block.blockInfos.Add(b.ToBlockInfo());
+                    if (Common.GetTimeStampInt64() - b.lastsavetime > TimeSpan.FromDays(5).TotalSeconds)
+                    {
+                        if (b.type != BlockType.Original)
+                            Block.blockInfos.Add(b.ToBlockInfo());
+                    }
+                    else
+                        Block.blockInfos.Add(b.ToBlockInfo());
             }
             else
             {
@@ -181,6 +187,7 @@ namespace AutoQiangke.Service
         public BlockMatchRule rule;
 
         public bool isdetailed;
+        public long lastsavetime;
 
         public BlockInfoStorageFull()
         {
@@ -218,9 +225,19 @@ namespace AutoQiangke.Service
             this.rule = b.rule;
             this.isdetailed = b.isdetailed;
             this.xklc = b.xklc;
+            this.lastsavetime = Common.GetTimeStampInt64();
         }
-        internal BlockInfo ToBlockInfo()
+        public BlockInfo ToBlockInfo()
         {
+            if (Common.GetTimeStampInt64() - this.lastsavetime > TimeSpan.FromDays(5).TotalSeconds)
+            {//返回Lite
+                var blockInfo = new BlockInfo();
+                blockInfo.id = this.id;
+                blockInfo.type = BlockType.Pending;
+                blockInfo.predictname = this.predictname;
+                blockInfo.rule = this.rule;
+                return blockInfo;
+            }
             BlockInfo b = new BlockInfo();
             b.id = this.id;
             b.type = this.type;
