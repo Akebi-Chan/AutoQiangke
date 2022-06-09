@@ -63,6 +63,8 @@ namespace AutoQiangke.Views
                 taskModel.UpdateJxbByAdd(jxb);
                 taskModel.CheckIsChosenJxb(jxb);
             }
+            else
+                taskModel.RaiseJxbsChanged();
             //JxbCardsControl1.AddJxb(jxb);
             TextJxb.Text = "";
         }

@@ -38,6 +38,8 @@ namespace AutoQiangke.Views
         {
             this.taskModel = (TaskModel)this.DataContext;
             taskModel.OnGoAnimation += TaskModel_OnGoAnimation;
+            if (taskModel.State == TaskState.Started)
+                TaskModel_OnGoAnimation();
         }
 
         private void TaskModel_OnGoAnimation()

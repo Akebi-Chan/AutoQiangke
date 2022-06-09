@@ -83,6 +83,17 @@ namespace AutoQiangke.Service
                 Stream streamcaptcha = resp4.GetResponseStream();
                 #endregion
 
+                #region 4.5. Captcha-Resize
+                Stream outputstream = new MemoryStream();
+                using (var image = new ImageMagick.MagickImage(streamcaptcha))
+                {
+                    image.Resize(new ImageMagick.MagickGeometry(100, 40) { IgnoreAspectRatio = true });
+                    image.Write(outputstream, ImageMagick.MagickFormat.Jpeg);
+                    
+                }
+                outputstream.Position = 0;
+                #endregion
+
                 #region 5. /captcha-solver
                 HttpWebRequest request_captcha = (HttpWebRequest)WebRequest.Create("https://plus.sjtu.edu.cn/captcha-solver/");
                 #region 初始化请求对象
@@ -122,7 +133,7 @@ namespace AutoQiangke.Service
                 postStream.Write(formdataBytes, 0, formdataBytes.Length);
 
                 //写入文件内容
-                using (var stream = streamcaptcha)
+                using (var stream = outputstream)
                 {
                     byte[] buffer = new byte[1024];
                     int bytesRead = 0;

@@ -121,7 +121,7 @@ namespace AutoQiangke.Views
             }
         }
 
-
+        private static bool firstrun = false;
         private BackgroundWorker worker;
 
         private void TextAPIHelp_MouseDown(object sender, MouseButtonEventArgs e)
@@ -145,8 +145,9 @@ namespace AutoQiangke.Views
             worker.DoWork += Login_DoWork;
             worker.RunWorkerCompleted += Login_RunWorkerCompleted;
 
-            if (IsAutoLogin)
+            if (IsAutoLogin && !firstrun && !Jac.islogin)
             {
+                firstrun = true;
                 worker.RunWorkerAsync();
             }
         }

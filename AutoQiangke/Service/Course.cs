@@ -145,10 +145,7 @@ namespace AutoQiangke.Service
             {
                 return new JxbQueryResult(false, "反序列化失败");
             }
-            if (json1.Count != json.tmpList.Count)
-            {
-                return new JxbQueryResult(false, "个数不相等");
-            }
+
             var jxbs = new List<JxbModel>();
             CourseModel c = null;
             for (int i = 0; i < json1.Count; i++)
@@ -162,6 +159,8 @@ namespace AutoQiangke.Service
                         jxbs.Add(new JxbModel(json1[i], json.tmpList[j], c));
                         break;
                     }
+            if (jxbs.Count == 0)
+                return new JxbQueryResult(false, "课程查询交集为空");
             return new JxbQueryResult(jxbs, c, "成功");
         }
 

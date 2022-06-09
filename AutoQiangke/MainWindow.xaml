@@ -55,7 +55,7 @@
                            Text="分布式数据库IO压力测试系统"
                            DockPanel.Dock="Top" />
                 <TextBlock HorizontalAlignment="Center"
-                           Text="beta1.0" Margin="0,2,0,0"
+                           Text="beta1.02" Margin="0,2,0,0"
                            DockPanel.Dock="Top" />
                 <Border Margin="0,5,0,0"
                         DockPanel.Dock="Top"

@@ -572,8 +572,11 @@ namespace AutoQiangke.Models
             {
                 State = TaskState.Started;
                 initbgw();
-                bgw.RunWorkerAsync();
-                OnGoAnimation.Invoke();
+                Monitor.Enter(this);
+                if (!bgw.IsBusy)
+                    bgw.RunWorkerAsync();
+                Monitor.Exit(this);
+                if (OnGoAnimation != null) OnGoAnimation.Invoke();
             }
             else
             {
@@ -618,10 +621,13 @@ namespace AutoQiangke.Models
 
         private void Bgw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            Monitor.Enter(this);
             if ((bool)e.Result)
             {
                 bgw.RunWorkerAsync();
             }
+            Monitor.Exit(this);
+
         }
 
         private void Bgw_DoWork(object sender, DoWorkEventArgs e)
@@ -639,7 +645,7 @@ namespace AutoQiangke.Models
                 e.Result = false;
                 return;
             }
-            OnGoAnimation.Invoke();
+            if (OnGoAnimation != null) OnGoAnimation.Invoke();
             System.Threading.Thread.Sleep(Interval);
             if (State != TaskState.Started)
             {
